@@ -1,5 +1,6 @@
 import csv
 import os
+import time
 
 # Adjust these paths according to your environment
 csv_path = './episode_list.csv'
@@ -14,13 +15,16 @@ with open(csv_path, newline='', encoding='utf-8') as csvfile:
         code = row['Code de production'].strip()
         title_to_code[title] = code
 
+# Define a regex pattern to extract the title from filenames
+pattern = r'Miraculous, les aventures de Ladybug et Chat Noir S02E\d+ - (.+)\.mkv'
+
 # Step 2: Loop through the files in the directory
 for filename in os.listdir(directory_path):
     if filename.endswith(".mkv"):
-        # Extract the episode title from the filename
-        parts = filename.split(' - ')
-        if len(parts) == 2:
-            title = parts[1].split('.')[0].strip()
+        # Use regex to extract the episode title from the filename
+        match = re.search(pattern, filename)
+        if match:
+            title = match.group(1).strip()
 
             # Step 3: Use the mapping to find the corresponding production code
             if title in title_to_code:
@@ -39,5 +43,6 @@ for filename in os.listdir(directory_path):
                 new_file_path = os.path.join(directory_path, new_filename)
                 os.rename(old_file_path, new_file_path)
                 print(f'Renamed "{filename}" to "{new_filename}"')
+                time.sleep(0.3)
 
 print("Renaming complete.")
