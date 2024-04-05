@@ -1,6 +1,7 @@
 import csv
 import os
 import time
+import re
 
 # Adjust these paths according to your environment
 csv_path = './episode_list.csv'
