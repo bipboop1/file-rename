@@ -37,10 +37,13 @@ print(f"{Fore.CYAN}")
 viewing_order = input("enter answer [e.g., 1]\n").strip()
 if viewing_order == "1":
 	print(f"{Fore.CYAN}using production order. (perfect choice){Style.RESET_ALL}")
-else:
+elif viewing_order == "2" or viewing_order == "3" or viewing_order == "4" or viewing_order == "5":
 	print(f"{Fore.CYAN}fuck you. using production order instead.{Style.RESET_ALL}")
+else:
+	print(f"{Fore.CYAN}using production order as default. (perfect choice){Style.RESET_ALL}")
+
 print(f"{Fore.CYAN}starting renaming...")
-time.sleep(1)
+time.sleep(3)
 
 
 # Step 1: Create a mapping from episode titles to production codes
@@ -63,9 +66,8 @@ for filename in os.listdir(directory_path):
 		match = re.search(pattern, filename)
 		if match:
 			title = match.group(1).strip()
-			print(f"match found! title: {title}")
+			print(f"{Fore.CYAN}match found! title: {Fore.YELLOW}{title}{Style.RESET_ALL}")
 
-			print(f"Use the mapping to find the corresponding production code")
 			# Step 3: Use the mapping to find the corresponding production code
 			if title in title_to_code:
 				full_code = title_to_code[title]
@@ -85,4 +87,7 @@ for filename in os.listdir(directory_path):
 				print(f'Renamed "{filename}" to "{new_filename}"')
 				time.sleep(0.3)
 
-print("Renaming complete.")
+print(f"{Fore.GREEN}Renaming complete.")
+time.sleep(0.5)
+print(f"{Fore.CYAN}Enjoy your show. Thank you for using the {Fore.CYAN}▀▄▀▄ {Fore.YELLOW}♥ {Fore.RED}Miraculous {Fore.YELLOW}file {Fore.MAGENTA}renamer{Fore.YELLOW} ♥{Fore.CYAN} ▄▀▄▀{Style.RESET_ALL}")
+print(f"{Fore.MAGENTA}Bye bye petit papillon !{Style.RESET_ALL}")
