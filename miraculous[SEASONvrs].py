@@ -54,7 +54,7 @@ with open(csv_path, newline='', encoding='utf-8') as csvfile:
 
 print(f"Define a regex pattern to extract the title from filenames, while maintaining the season number")
 # Define a regex pattern to extract the title from filenames, while maintaining the season number
-pattern = r'Miraculous, les aventures de Ladybug et Chat Noir S0{season_number}E\d+ - (.+)\.mkv'
+pattern = fr'Miraculous, les aventures de Ladybug et Chat Noir S0{season_number}E\d+ - (.+)\.mkv'
 
 print(f"Step 2: Loop through the files in the directory")
 # Step 2: Loop through the files in the directory
