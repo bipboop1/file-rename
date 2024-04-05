@@ -9,15 +9,31 @@ csv_path = './episode_list.csv'
 directory_path = './episodes/'
 
 # intro
-print(f"\n\n")
+print(f"\n")
 print(f"{Fore.CYAN}▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀ ")
-print(f"{Fore.CYAN}▀▄▀▄▀▄▀▄▀▄  welcome to my  ▄▀▄▀▄▀▄▀▄▀ ")
-print(f"{Fore.CYAN}▀▄▀▄▀▄ Miraculous file renamer ▄▀▄▀▄▀{Style.RESET_ALL}")
+print(f"{Fore.CYAN}▀▄▀▄▀▄▀▄▀▄ {Fore.CYAN} welcome to my  {Fore.CYAN}▄▀▄▀▄▀▄▀▄▀ ")
+print(f"{Fore.CYAN}▀▄▀▄▀▄ {Fore.RED}Miraculous {Fore.YELLOW}file {Fore.GREEN}renamer{Fore.CYAN} ▄▀▄▀▄▀{Style.RESET_ALL}{Fore.CYAN}")
 print(f"\n")
 
 # Prompt the user for the season number
-season_number = input("for wich season do you wanna rename files? enter season number [e.g., 2 for Season 2]").strip()
+print(f"{Fore.CYAN}for wich season do you wanna rename files?{Style.RESET_ALL}")
+season_number = input("enter season number [e.g., 2 for Season 2]\n").strip()
 
+# prompt for viweing order
+print(f"{Fore.CYAN} wich viewing order do you want to use?{Style.RESET_ALL}")
+print(f"{Fore.CYAN}• {Fore.MAGENTA}1 {Fore.CYAN}: production order (recommanded by Thomas Astruc){Style.RESET_ALL}")
+print(f"{Fore.CYAN}• {Fore.MAGENTA}2 {Fore.CYAN}: TF1 diffusion order{Style.RESET_ALL}")
+print(f"{Fore.CYAN}• {Fore.MAGENTA}3 {Fore.CYAN}: Disney Channel diffusion order{Style.RESET_ALL}")
+print(f"{Fore.CYAN}• {Fore.MAGENTA}4 {Fore.CYAN}: Netflix order{Style.RESET_ALL}")
+print(f"{Fore.CYAN}• {Fore.MAGENTA}5 {Fore.CYAN}: Disney+ order{Style.RESET_ALL}")
+viewing_order = input("enter answer [e.g., 1]\n").strip()
+if viewing_order == "1":
+	print(f"{Fore.CYAN}using production order. (prefect choice){Style.RESET_ALL}")
+else:
+	print(f"{Fore.CYAN}fuck you. using production order instead.{Style.RESET_ALL}")
+
+
+print(f"Step 1: Create a mapping from episode titles to production codes")
 # Step 1: Create a mapping from episode titles to production codes
 title_to_code = {}
 with open(csv_path, newline='', encoding='utf-8') as csvfile:
@@ -28,17 +44,22 @@ with open(csv_path, newline='', encoding='utf-8') as csvfile:
 		if code.startswith(season_number):
 			title_to_code[title] = code
 
+print(f"Define a regex pattern to extract the title from filenames, while maintaining the season number")
 # Define a regex pattern to extract the title from filenames, while maintaining the season number
 pattern = r'Miraculous, les aventures de Ladybug et Chat Noir S0{season_number}E\d+ - (.+)\.mkv'
 
+print(f"Step 2: Loop through the files in the directory")
 # Step 2: Loop through the files in the directory
 for filename in os.listdir(directory_path):
     if filename.endswith(".mkv"):
+        print(f"Use regex to extract the episode title from the filename")
         # Use regex to extract the episode title from the filename
         match = re.search(pattern, filename)
         if match:
             title = match.group(1).strip()
+            print(f"match found! title: {title}")
 
+            print(f"Use the mapping to find the corresponding production code")
             # Step 3: Use the mapping to find the corresponding production code
             if title in title_to_code:
                 full_code = title_to_code[title]
@@ -56,6 +77,6 @@ for filename in os.listdir(directory_path):
                 new_file_path = os.path.join(directory_path, new_filename)
                 os.rename(old_file_path, new_file_path)
                 print(f'Renamed "{filename}" to "{new_filename}"')
-                time.sleep(0.3)
+                time.sleep(2)
 
 print("Renaming complete.")
