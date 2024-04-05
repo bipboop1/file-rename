@@ -41,7 +41,6 @@ else:
 	print(f"{Fore.CYAN}fuck you. using production order instead.{Style.RESET_ALL}")
 
 
-print(f"Step 1: Create a mapping from episode titles to production codes")
 # Step 1: Create a mapping from episode titles to production codes
 title_to_code = {}
 with open(csv_path, newline='', encoding='utf-8') as csvfile:
@@ -52,15 +51,12 @@ with open(csv_path, newline='', encoding='utf-8') as csvfile:
 		if code.startswith(season_number):
 			title_to_code[title] = code
 
-print(f"Define a regex pattern to extract the title from filenames, while maintaining the season number")
 # Define a regex pattern to extract the title from filenames, while maintaining the season number
 pattern = fr'Miraculous, les aventures de Ladybug et Chat Noir S0{season_number}E\d+ - (.+)\.mkv'
 
-print(f"Step 2: Loop through the files in the directory")
 # Step 2: Loop through the files in the directory
 for filename in os.listdir(directory_path):
 	if filename.endswith(".mkv"):
-		print(f"Use regex to extract the episode title from the filename")
 		# Use regex to extract the episode title from the filename
 		match = re.search(pattern, filename)
 		if match:
@@ -85,6 +81,6 @@ for filename in os.listdir(directory_path):
 				new_file_path = os.path.join(directory_path, new_filename)
 				os.rename(old_file_path, new_file_path)
 				print(f'Renamed "{filename}" to "{new_filename}"')
-				time.sleep(2)
+				time.sleep(0.3)
 
 print("Renaming complete.")
