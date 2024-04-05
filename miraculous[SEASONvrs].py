@@ -9,18 +9,22 @@ csv_path = './episode_list.csv'
 directory_path = './episodes/'
 
 # intro
-# clear terminal
 os.system('cls' if os.name == 'nt' else 'clear')
 print(f"\n")
 print(f"{Fore.CYAN}▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀ ")
 print(f"{Fore.CYAN}▀▄▀▄▀▄▀▄▀▄ {Fore.CYAN} welcome to my  {Fore.CYAN}▄▀▄▀▄▀▄▀▄▀ ")
+print(f"{Fore.CYAN}▀▄▀▄				 ▄▀▄▀{Style.RESET_ALL}")
 print(f"{Fore.CYAN}▀▄▀▄ {Fore.YELLOW}♥ {Fore.RED}Miraculous {Fore.YELLOW}file {Fore.MAGENTA}renamer{Fore.YELLOW} ♥{Fore.CYAN} ▄▀▄▀{Style.RESET_ALL}")
+print(f"{Fore.CYAN}▀▄▀▄				 ▄▀▄▀{Style.RESET_ALL}")
+print(f"{Fore.CYAN}▀▄▀▄				 ▄▀▄▀{Style.RESET_ALL}")
+print(f"{Fore.CYAN}▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀ {Style.RESET_ALL}")
+# print(f"{Fore.CYAN}▀▄▀▄{Fore.CYAN}			by {Fore.YELLOW}elt0n {Fore.CYAN}▄▀▄▀{Style.RESET_ALL}")
 print(f"\n")
 # ◌♠♣♥☼☺☻
 
 # Prompt the user for the season number
 print(f"{Fore.CYAN}for wich season do you wanna rename files?{Style.RESET_ALL}")
-season_number = input("enter season number [available seasons: 2 - 3]\n").strip()
+season_number = input("enter season number [available: 2 - 3]\n").strip()
 
 # prompt for viweing order
 print(f"{Fore.CYAN} wich viewing order do you want to use?{Style.RESET_ALL}")
@@ -32,7 +36,7 @@ print(f"{Fore.CYAN}• {Fore.MAGENTA}5 {Fore.CYAN}: Disney+ order{Style.RESET_AL
 print(f"{Fore.CYAN}")
 viewing_order = input("enter answer [e.g., 1]\n").strip()
 if viewing_order == "1":
-	print(f"{Fore.CYAN}using production order. (prefect choice){Style.RESET_ALL}")
+	print(f"{Fore.CYAN}using production order. (perfect choice){Style.RESET_ALL}")
 else:
 	print(f"{Fore.CYAN}fuck you. using production order instead.{Style.RESET_ALL}")
 
