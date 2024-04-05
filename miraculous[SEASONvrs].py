@@ -39,6 +39,8 @@ if viewing_order == "1":
 	print(f"{Fore.CYAN}using production order. (perfect choice){Style.RESET_ALL}")
 else:
 	print(f"{Fore.CYAN}fuck you. using production order instead.{Style.RESET_ALL}")
+print(f"{Fore.CYAN}starting renaming...")
+time.sleep(1)
 
 
 # Step 1: Create a mapping from episode titles to production codes
