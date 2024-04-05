@@ -9,15 +9,18 @@ csv_path = './episode_list.csv'
 directory_path = './episodes/'
 
 # intro
+# clear terminal
+os.system('cls' if os.name == 'nt' else 'clear')
 print(f"\n")
 print(f"{Fore.CYAN}▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀ ")
 print(f"{Fore.CYAN}▀▄▀▄▀▄▀▄▀▄ {Fore.CYAN} welcome to my  {Fore.CYAN}▄▀▄▀▄▀▄▀▄▀ ")
-print(f"{Fore.CYAN}▀▄▀▄▀▄ {Fore.RED}Miraculous {Fore.YELLOW}file {Fore.GREEN}renamer{Fore.CYAN} ▄▀▄▀▄▀{Style.RESET_ALL}{Fore.CYAN}")
+print(f"{Fore.CYAN}▀▄▀▄ {Fore.YELLOW}♥ {Fore.RED}Miraculous {Fore.YELLOW}file {Fore.MAGENTA}renamer{Fore.YELLOW} ♥{Fore.CYAN} ▄▀▄▀{Style.RESET_ALL}")
 print(f"\n")
+# ◌♠♣♥☼☺☻
 
 # Prompt the user for the season number
 print(f"{Fore.CYAN}for wich season do you wanna rename files?{Style.RESET_ALL}")
-season_number = input("enter season number [e.g., 2 for Season 2]\n").strip()
+season_number = input("enter season number [available seasons: 2 - 3]\n").strip()
 
 # prompt for viweing order
 print(f"{Fore.CYAN} wich viewing order do you want to use?{Style.RESET_ALL}")
@@ -26,6 +29,7 @@ print(f"{Fore.CYAN}• {Fore.MAGENTA}2 {Fore.CYAN}: TF1 diffusion order{Style.RE
 print(f"{Fore.CYAN}• {Fore.MAGENTA}3 {Fore.CYAN}: Disney Channel diffusion order{Style.RESET_ALL}")
 print(f"{Fore.CYAN}• {Fore.MAGENTA}4 {Fore.CYAN}: Netflix order{Style.RESET_ALL}")
 print(f"{Fore.CYAN}• {Fore.MAGENTA}5 {Fore.CYAN}: Disney+ order{Style.RESET_ALL}")
+print(f"{Fore.CYAN}")
 viewing_order = input("enter answer [e.g., 1]\n").strip()
 if viewing_order == "1":
 	print(f"{Fore.CYAN}using production order. (prefect choice){Style.RESET_ALL}")
@@ -51,32 +55,32 @@ pattern = r'Miraculous, les aventures de Ladybug et Chat Noir S0{season_number}E
 print(f"Step 2: Loop through the files in the directory")
 # Step 2: Loop through the files in the directory
 for filename in os.listdir(directory_path):
-    if filename.endswith(".mkv"):
-        print(f"Use regex to extract the episode title from the filename")
-        # Use regex to extract the episode title from the filename
-        match = re.search(pattern, filename)
-        if match:
-            title = match.group(1).strip()
-            print(f"match found! title: {title}")
+	if filename.endswith(".mkv"):
+		print(f"Use regex to extract the episode title from the filename")
+		# Use regex to extract the episode title from the filename
+		match = re.search(pattern, filename)
+		if match:
+			title = match.group(1).strip()
+			print(f"match found! title: {title}")
 
-            print(f"Use the mapping to find the corresponding production code")
-            # Step 3: Use the mapping to find the corresponding production code
-            if title in title_to_code:
-                full_code = title_to_code[title]
-                # Truncate the first digit from the production code
-                if len(full_code) == 3:
-                    new_code = full_code[1:]
-                else:
-                    new_code = full_code
+			print(f"Use the mapping to find the corresponding production code")
+			# Step 3: Use the mapping to find the corresponding production code
+			if title in title_to_code:
+				full_code = title_to_code[title]
+				# Truncate the first digit from the production code
+				if len(full_code) == 3:
+					new_code = full_code[1:]
+				else:
+					new_code = full_code
 
-                new_episode_number = f'S0{season_number}E{new_code}'
-                new_filename = f"Miraculous, les aventures de Ladybug et Chat Noir {new_episode_number} - {title}.mkv"
+				new_episode_number = f'S0{season_number}E{new_code}'
+				new_filename = f"Miraculous, les aventures de Ladybug et Chat Noir {new_episode_number} - {title}.mkv"
 
-                # Step 4 and 5: Generate the new filename and rename the file
-                old_file_path = os.path.join(directory_path, filename)
-                new_file_path = os.path.join(directory_path, new_filename)
-                os.rename(old_file_path, new_file_path)
-                print(f'Renamed "{filename}" to "{new_filename}"')
-                time.sleep(2)
+				# Step 4 and 5: Generate the new filename and rename the file
+				old_file_path = os.path.join(directory_path, filename)
+				new_file_path = os.path.join(directory_path, new_filename)
+				os.rename(old_file_path, new_file_path)
+				print(f'Renamed "{filename}" to "{new_filename}"')
+				time.sleep(2)
 
 print("Renaming complete.")
