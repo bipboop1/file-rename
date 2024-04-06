@@ -43,7 +43,7 @@ else:
 	print(f"{Fore.CYAN}using production order as default. (perfect choice){Style.RESET_ALL}")
 
 print(f"{Fore.CYAN}starting renaming...")
-time.sleep(3)
+time.sleep(2)
 
 
 # Step 1: Create a mapping from episode titles to production codes
@@ -87,7 +87,16 @@ for filename in os.listdir(directory_path):
 				print(f'Renamed "{filename}" to "{new_filename}"')
 				time.sleep(0.3)
 
-print(f"{Fore.GREEN}Renaming complete.")
+print(f"{Fore.GREEN}Renaming complete.\n")
 time.sleep(0.5)
-print(f"{Fore.CYAN}Enjoy your show. Thank you for using the {Fore.CYAN}▀▄▀▄ {Fore.YELLOW}♥ {Fore.RED}Miraculous {Fore.YELLOW}file {Fore.MAGENTA}renamer{Fore.YELLOW} ♥{Fore.CYAN} ▄▀▄▀{Style.RESET_ALL}")
-print(f"{Fore.MAGENTA}Bye bye petit papillon !{Style.RESET_ALL}")
+print(f"{Fore.CYAN}▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀ ")
+print(f"{Fore.CYAN}▀▄▀▄▀▄▀▄▀▄{Fore.CYAN} enjoy the show! {Fore.CYAN}▄▀▄▀▄▀▄▀▄▀ ")
+print(f"{Fore.CYAN}▀▄▀▄				 ▄▀▄▀{Style.RESET_ALL}")
+print(f"{Fore.CYAN}▀▄▀▄   thank you for using the	 ▄▀▄▀{Style.RESET_ALL}")
+print(f"{Fore.CYAN}▀▄▀▄ {Fore.YELLOW}♥ {Fore.RED}Miraculous {Fore.YELLOW}file {Fore.MAGENTA}renamer{Fore.YELLOW} ♥{Fore.CYAN} ▄▀▄▀{Style.RESET_ALL}")
+print(f"{Fore.CYAN}▀▄▀▄				 ▄▀▄▀{Style.RESET_ALL}")
+# print(f"{Fore.CYAN}▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀ ")
+print(f"{Fore.CYAN}▀▄▀▄▀▄▀▄▀▄▀▄		 ▄▀▄▀▄▀▄▀▄▀▄▀ ")
+print(f"{Fore.CYAN}▀▄▀▄				 ▄▀▄▀{Style.RESET_ALL}")
+print(f"{Fore.CYAN}▀▄▀▄{Fore.MAGENTA}   bye bye petit papillon !  {Fore.CYAN}▄▀▄▀{Style.RESET_ALL}")
+print(f"\n")
